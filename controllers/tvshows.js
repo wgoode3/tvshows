@@ -8,7 +8,7 @@ class TvShowController {
             .catch(err => res.json(err));
     }
     GetOne(req, res) {
-        TvShow.find({_id: req.params._id})
+        TvShow.findOne({_id: req.params._id})
             .then(show => res.json(show))
             .catch(err => res.json(err));
     }
@@ -19,7 +19,7 @@ class TvShowController {
             .catch(err => res.json(err));
     }
     Update(req, res) {
-        TvShow.findOneAndUpdate({_id: req.params._id}, req.body)
+        TvShow.findOneAndUpdate({_id: req.params._id}, req.body, {runValidators: true})
             .then(() => res.json({status: "ok"}))
             .catch(err => res.json(err));
     }
